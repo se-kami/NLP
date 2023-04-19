@@ -44,7 +44,7 @@ To train the decoder model:
 ### Data
 Raw data is in form of pair of sentences in source and target language.
 To convert it into something that the transformer can read perform:
-1. Tokenization - split text into units and normalize the units
+1. Tokenize - split text into units and normalize the units
 2. Add special tokens - add SOS (start of sequence) and EOS (end of sequence) tokens to text
 3. Build a vocabulary - go through text and count number of tokens, then replace top N (10000) tokens with an integer index and replace other tokens with a default index (UNK token)
 4. Make batches - to efficiently pass the input through the transformer all examples should have the same length, add padding token to all examples in the batch
@@ -57,28 +57,28 @@ I was hungry yesterday
 He was reading a book
 ```
 
-Tokenized
+Tokenized:
 ```
 i-am-tall
 i-was-hungry-yesterday
 he-was-reading-a-book
 ```
 
-Add special tokens
+Add special tokens:
 ```
 <sos>-i-am-tall-<eos>
 <sos>-i-was-hungry-yesterday-<eos>
 <sos>-he-was-reading-a-book-<eos>
 ```
 
-Lookup indices
+Lookup indices:
 ```
 1-100-503-321-2
 1-100-312-254-2
 1-781-312-431-120-678-2
 ```
 
-Pad to same length
+Pad to same length:
 ```
 1-100-503-321-2-0-0
 1-100-312-254-2-0-0
